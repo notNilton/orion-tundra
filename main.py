@@ -4,15 +4,26 @@ from pynput import mouse
 import threading
 import datetime
 import os
+from PIL import ImageGrab  # Para capturar a tela
 
 # Caminho do arquivo de log
 log_file = os.path.join(os.path.dirname(__file__), "log.txt")
+temp_print_folder = os.path.join(os.path.dirname(__file__), "temp-print")
+os.makedirs(temp_print_folder, exist_ok=True)  # Cria a pasta se não existir
 listener = None  # Variável global para o Listener do mouse
 
 def write_log(message):
     """Escreve uma mensagem no arquivo de log."""
     with open(log_file, "a") as file:
         file.write(f"{message}\n")
+
+def capture_screen(click_id):
+    """Tira um print da tela e salva na pasta 'temp-print'."""
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_path = os.path.join(temp_print_folder, f"click_{click_id}_{timestamp}.png")
+    screenshot = ImageGrab.grab()
+    screenshot.save(file_path)
+    print(f"Print da tela salvo em: {file_path}")
 
 def on_click(x, y, button, pressed):
     """Callback para capturar os cliques do mouse."""
@@ -21,6 +32,11 @@ def on_click(x, y, button, pressed):
     log_message = f"{timestamp} - {action} {button} at ({x}, {y})"
     print(log_message)  # Exibe no terminal
     write_log(log_message)  # Escreve no arquivo de log
+
+    # Captura de tela apenas quando o botão é pressionado
+    if pressed:
+        click_id = button.name  # Identificador único para o clique (esquerdo, direito, etc.)
+        capture_screen(click_id)
 
 def start_capturing():
     """Inicia a captura dos cliques."""
@@ -35,7 +51,7 @@ def start_capturing():
     thread.daemon = True  # Finaliza a thread ao fechar o programa
     thread.start()
 
-    messagebox.showinfo("Informação", "Captura iniciada! Os cliques serão salvos em log.txt")
+    messagebox.showinfo("Informação", "Captura iniciada! Os cliques e prints serão salvos.")
 
 def stop_capturing():
     """Para a captura dos cliques."""

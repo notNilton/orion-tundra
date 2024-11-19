@@ -1,1 +1,20 @@
+# Biblioteca para automação de cliques e eventos do mouse/teclado
 pynput
+
+# Biblioteca para manipulação de imagens, capturas de tela e processamento básico
+pillow
+
+# Biblioteca para reconhecimento de imagem e automação de interface gráfica
+opencv-python
+
+# Biblioteca para detecção e correspondência de padrões em imagens (OCR, etc.)
+pytesseract
+
+# Biblioteca para criar interfaces gráficas simples
+tk
+
+# Biblioteca para automação de interfaces de desktop
+pyautogui
+
+# Biblioteca para simplificar a navegação de pastas e diretórios
+pathlib
