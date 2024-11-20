@@ -1,20 +1,20 @@
-# Biblioteca para automação de cliques e eventos do mouse/teclado
+# Mouse and keyboard automation
 pynput
 
-# Biblioteca para manipulação de imagens, capturas de tela e processamento básico
+# Image manipulation and screenshot handling
 pillow
 
-# Biblioteca para reconhecimento de imagem e automação de interface gráfica
-opencv-python
+# Image processing and pattern recognition (OpenCV)
+opencv-python-headless
 
-# Biblioteca para detecção e correspondência de padrões em imagens (OCR, etc.)
+# Optical character recognition (OCR)
 pytesseract
 
-# Biblioteca para criar interfaces gráficas simples
+# GUI creation (tkinter is built into Python, but listed for clarity)
 tk
 
-# Biblioteca para automação de interfaces de desktop
+# Desktop automation (mouse and keyboard)
 pyautogui
 
-# Biblioteca para simplificar a navegação de pastas e diretórios
-pathlib
+# Keyboard hotkey support
+keyboard
