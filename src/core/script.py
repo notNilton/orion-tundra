@@ -6,7 +6,8 @@ from pynput import mouse
 from tkinter import messagebox
 import pyautogui
 from utils.logger import log_message
-from utils.config import LOG_FILE, SCRIPT_FILE, TEMP_FOLDER
+from utils.config import LOG_FILE, SCRIPT_FILE, TEMP_FOLDER, BASE_DIR
+from utils.screen_checker import check_screen
 
 listener = None
 
@@ -64,3 +65,16 @@ def toggle_capturing(start=True):
         listener.stop()
         listener = None
         log_message("Captura encerrada!")
+
+
+def run_screen_checker():
+    """Executa o verificador de tela."""
+    # Caminho para a imagem do item a ser localizado
+    template_path = os.path.join(BASE_DIR, "data", "example-data", "image-backpack.png")
+
+    try:
+        # Chama a função de verificação de tela
+        check_screen(template_path)
+    except Exception as e:
+        log_message(f"Erro ao executar o verificador de tela: {e}")
+        print(f"Erro ao executar o verificador de tela: {e}")
