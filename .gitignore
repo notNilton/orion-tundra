@@ -132,6 +132,7 @@ dmypy.json
 cython_debug/
 
 # Temporary Files
+data/
 temp-print/
 example-data/
 log.txt
