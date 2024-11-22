@@ -18,3 +18,5 @@ pyautogui
 
 # Keyboard hotkey support
 keyboard
+
+pygetwindow
